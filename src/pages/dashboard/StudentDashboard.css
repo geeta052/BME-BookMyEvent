@@ -1,0 +1,151 @@
+/* Container for the dashboard */
+.dashboard-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+  
+  /* Top Header Section */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  /* Profile Picture (Left Side) */
+  .profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Registered Events Button (Right Side) */
+  .registered-events-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .registered-events-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Dashboard Title */
+  .dashboard-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Event Container */
+  .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Individual Event Card */
+  .event-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Event Image */
+  .event-main-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Event Title */
+  .event-title {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  /* Event Details */
+  .event-detail {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Book Now Button */
+  .book-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .book-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Loading Text */
+  .loading-text {
+    font-size: 18px;
+    color: #666;
+  }
+  /* Recommended Events Section */
+.recommended-events-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recommended-events-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.recommended-event-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.recommended-event-card h3 {
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.recommended-event-card p {
+  font-size: 16px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.recommended-event-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-left: 15px;
+}
