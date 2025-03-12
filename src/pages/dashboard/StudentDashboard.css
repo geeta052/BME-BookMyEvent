@@ -1,151 +1,320 @@
-/* Container for the dashboard */
+/* StudentDashboard.css - Modern UI Design */
+
+/* Global Styles & Variables */
+:root {
+  --primary: #6c5ce7;
+  --primary-light: #a29bfe;
+  --secondary: #00cec9;
+  --accent: #fd79a8;
+  --dark: #2d3436;
+  --light: #f5f6fa;
+  --success: #00b894;
+  --warning: #fdcb6e;
+  --danger: #d63031;
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --glow-effect: 0 0 10px rgba(108, 92, 231, 0.4), 0 0 20px rgba(108, 92, 231, 0.3);
+  --transition: all 0.3s ease-in-out;
+  --border-radius: 14px;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #3a3a55);
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  color: var(--light);
+}
+
 .dashboard-container {
-    width: 100%;
-    padding: 20px;
-    background-color: #f5f5f5;
-    text-align: center;
-  }
-  
-  /* Top Header Section */
-  .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-  }
-  
-  /* Profile Picture (Left Side) */
-  .profile-picture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  /* Registered Events Button (Right Side) */
-  .registered-events-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  
-  .registered-events-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Dashboard Title */
-  .dashboard-title {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Event Container */
-  .events-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  /* Individual Event Card */
-  .event-card {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    width: 250px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  /* Event Image */
-  .event-main-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  /* Event Title */
-  .event-title {
-    font-size: 18px;
-    color: #333;
-    margin: 10px 0;
-  }
-  
-  /* Event Details */
-  .event-detail {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  /* Book Now Button */
-  .book-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .book-button:hover {
-    background-color: #218838;
-  }
-  
-  /* Loading Text */
-  .loading-text {
-    font-size: 18px;
-    color: #666;
-  }
-  /* Recommended Events Section */
-.recommended-events-container {
-  margin-top: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.profile-picture {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  transition: var(--transition);
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--primary-light);
+}
+
+.registered-events-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 10px;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 6px rgba(108, 92, 231, 0.2);
+  display: block;
+  margin: auto;
+  width: auto; /* Ensures it only takes necessary space */
+  min-width: 450px; /* Adjust this value as needed */
+  text-align: center;
+}
+
+.registered-events-button:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(108, 92, 231, 0.3);
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--primary);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.dashboard-title:after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Events Grid */
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.event-card {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  position: relative;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.event-main-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.event-card:hover .event-main-image {
+  transform: scale(1.05);
+}
+
+.event-title {
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin: 15px 15px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.event-detail {
+  margin: 8px 15px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.book-button {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 15px auto;
+  padding: 12px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.book-button:hover {
+  background: linear-gradient(45deg, var(--secondary), var(--primary));
+  box-shadow: 0 5px 15px rgba(0, 206, 201, 0.4);
+}
+
+/* Recommended Events Section */
+.recommended-events-container {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: var(--card-shadow);
 }
 
 .recommended-events-container h2 {
-  font-size: 24px;
-  color: #333;
+  color: var(--primary);
+  margin-top: 0;
   margin-bottom: 20px;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.recommended-events-container h2:after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: var(--secondary);
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+.recommended-events-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .recommended-event-card {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  background-color: #f9f9f9;
   padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
+  background: #f8f9fa;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  gap: 15px;
+}
+
+.recommended-event-card:hover {
+  background: #f0f0f0;
+  transform: translateX(5px);
 }
 
 .recommended-event-card h3 {
-  font-size: 20px;
-  color: #444;
-  margin-bottom: 5px;
+  width: 100%;
+  margin: 0 0 5px 0;
+  color: var(--primary);
 }
 
 .recommended-event-card p {
-  font-size: 16px;
-  color: #666;
-  margin: 5px 0;
+  margin: 5px 20px 5px 0;
+  font-size: 0.9rem;
 }
 
 .recommended-event-image {
   width: 80px;
   height: 80px;
-  border-radius: 5px;
   object-fit: cover;
-  margin-left: 15px;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+/* Loading State */
+.loading-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin: 40px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .events-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .recommended-event-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .recommended-event-image {
+    margin-left: 0;
+    width: 100%;
+    height: 150px;
+  }
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.event-card, .recommended-event-card {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.events-container .event-card:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.events-container .event-card:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+/* Badge styling for event type */
+.event-card::before {
+  content: attr(data-type);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* Additional refinements */
+.event-card:nth-child(3n+1)::before {
+  background: var(--accent);
+}
+
+.event-card:nth-child(3n+2)::before {
+  background: var(--secondary);
+}
+
+.event-card:nth-child(3n+3)::before {
+  background: var(--primary);
 }
