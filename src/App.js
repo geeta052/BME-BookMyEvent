@@ -20,6 +20,8 @@ import InstituteLoginForm from "./pages/details/InstituteLogin";
 import AdminPage from "./pages/dashboard/AdminDashboard";
 import RegisteredEvents from "./pages/dashboard/RegisteredEvents";
 import Chat from "./pages/Chat"; 
+import About from "./pages/about/about";
+import College from "./pages/college/college";
 import { getEvents } from "./utils/eventService"; // 🔹 Import function to fetch events
 
 function App() {
@@ -67,6 +69,10 @@ function App() {
             <Route path="event/:id" element={<RequireAuth><EventDetails events={events} /></RequireAuth>} /> {/* 🔹 Pass events to EventDetails */}
             <Route path="registered-events" element={<RequireAuth><RegisteredEvents events={events} /></RequireAuth>} /> {/* 🔹 Pass events to RegisteredEvents */}
             <Route path="chat/:chatRoomId" element={<RequireAuth><Chat /></RequireAuth>} />
+            <Route path="about" element={<About />} />
+            <Route path="college" element={<College />} />
+
+
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,418 @@
+/* Instagram Theme Colors */
+:root {
+    --instagram-pink: #d6249f;
+    --instagram-purple: #6659c7;
+    --instagram-orange: #e6683c;
+    --instagram-magenta: #bc1888;
+    --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    --light-purple: #e0d3ff;
+    --light-pink: #fcddec;
+    --white: #ffffff;
+    --light-gray: #f0f0f0;
+    --medium-gray: #dbdbdb;
+    --dark-gray: #8e8e8e;
+    --text-dark: #262626;
+  }
+  
+  /* General Layout */
+  .about-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  section {
+    padding: 60px 5%;
+  }
+  
+  h1, h2, h3, h4 {
+    margin: 0;
+  }
+  
+  /* Hero Section */
+  .about-hero {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+    background: var(--instagram-gradient);
+    padding: 0 20px;
+  }
+  
+  .about-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://via.placeholder.com/1600x800/6659c7/ffffff?text=Campus+Events');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+  }
+  
+  .about-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .about-hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .about-tagline {
+    font-size: 20px;
+    margin: 0;
+    max-width: 700px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Mission Section */
+  .about-mission {
+    background-color: var(--white);
+    text-align: center;
+  }
+  
+  .mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .about-mission h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    background: var(--instagram-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  
+  .about-mission p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  /* Founders Section */
+  .founders-section {
+    background-color: var(--light-purple);
+    padding-bottom: 40px;
+  }
+  
+  .founders-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: var(--instagram-purple);
+  }
+  
+  .founders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .founder-card {
+    background-color: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(102, 89, 199, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .founder-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(102, 89, 199, 0.2);
+  }
+  
+  .founder-image-container {
+    height: 150px;
+    overflow: hidden;
+  }
+  
+  .founder-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  
+  .founder-card:hover .founder-image {
+    transform: scale(1.05);
+  }
+  
+  .founder-info {
+    padding: 25px;
+  }
+  
+  .founder-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .founder-role {
+    color: var(--instagram-pink);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .founder-bio {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--dark-gray);
+  }
+  
+  .founder-social {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--instagram-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  .social-icon:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  
+  /* Story Section */
+  .about-story {
+    background-color: var(--white);
+    padding-bottom: 80px;
+  }
+  
+  .about-story h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    background: var(--instagram-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .story-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .story-text {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .story-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+  }
+  
+  .story-timeline {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+  }
+  
+  .story-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: var(--instagram-gradient);
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 30px;
+  }
+  
+  .timeline-dot {
+    position: absolute;
+    left: 11px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--instagram-gradient);
+    z-index: 1;
+  }
+  
+  .timeline-content h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: var(--instagram-purple);
+  }
+  
+  .timeline-content p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--dark-gray);
+  }
+  
+  /* Values Section */
+  .about-values {
+    background-color: var(--light-pink);
+    padding-bottom: 80px;
+  }
+  
+  .about-values h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: var(--instagram-pink);
+  }
+  
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .value-card {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(214, 36, 159, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .value-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .value-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--instagram-pink);
+  }
+  
+  .value-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--dark-gray);
+    margin: 0;
+  }
+  
+  /* CTA Section */
+  .about-cta {
+    background: var(--instagram-gradient);
+    color: var(--white);
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .about-cta h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .about-cta p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .cta-button {
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-3px);
+  }
+  
+  .cta-button.primary {
+    background-color: var(--white);
+    color: var(--instagram-pink);
+  }
+  
+  .cta-button.secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    section {
+      padding: 40px 5%;
+    }
+    
+    .about-hero {
+      height: 250px;
+    }
+    
+    .about-hero h1 {
+      font-size: 32px;
+    }
+    
+    .about-tagline {
+      font-size: 16px;
+    }
+    
+    .founder-card {
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    
+    .story-content {
+      flex-direction: column;
+    }
+    
+    .story-timeline {
+      margin-top: 30px;
+    }
+  }
+  
+  /* Add Font Awesome for social icons */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
