@@ -19,7 +19,6 @@ import AdminLoginForm from "./pages/details/admin";
 import InstituteLoginForm from "./pages/details/InstituteLogin";
 import AdminPage from "./pages/dashboard/AdminDashboard";
 import RegisteredEvents from "./pages/dashboard/RegisteredEvents";
-import Events from "./pages/explore/events";
 import Chat from "./pages/Chat"; 
 import { getEvents } from "./utils/eventService"; // 🔹 Import function to fetch events
 
@@ -68,7 +67,6 @@ function App() {
             <Route path="event/:id" element={<RequireAuth><EventDetails events={events} /></RequireAuth>} /> {/* 🔹 Pass events to EventDetails */}
             <Route path="registered-events" element={<RequireAuth><RegisteredEvents events={events} /></RequireAuth>} /> {/* 🔹 Pass events to RegisteredEvents */}
             <Route path="chat/:chatRoomId" element={<RequireAuth><Chat /></RequireAuth>} />
-            <Route path="explore" element={<Events />} />
           </Route>
         </Routes>
       </BrowserRouter>
