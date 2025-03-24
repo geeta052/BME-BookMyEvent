@@ -79,7 +79,7 @@ function StudentDashboard() {
 
     // Apply location filter
     if (locationFilter) {
-      result = result.filter(event => 
+      result = result.filter(event =>
         event.location && event.location.toLowerCase().includes(locationFilter.toLowerCase())
       );
     }
@@ -133,7 +133,7 @@ function StudentDashboard() {
       setEvents((prevEvents) =>
         prevEvents.map((event) => {
           if (!event.images || event.images.length <= 1) return event;
-          
+
           const updatedImages = [...event.images];
           const firstImage = updatedImages.shift();
           updatedImages.push(firstImage);
@@ -211,12 +211,12 @@ function StudentDashboard() {
         <div className="sidebar-header">
           <h3>Filters</h3>
         </div>
-        
+
         <div className="sidebar-content">
           <div className="filter-section">
             <h4>Sort By</h4>
-            <select 
-              value={sortBy} 
+            <select
+              value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="filter-dropdown"
             >
@@ -228,8 +228,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>Event Categories</h4>
-            <select 
-              value={categoryFilter} 
+            <select
+              value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -244,8 +244,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>Status</h4>
-            <select 
-              value={statusFilter} 
+            <select
+              value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -258,8 +258,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>User Type</h4>
-            <select 
-              value={userTypeFilter} 
+            <select
+              value={userTypeFilter}
               onChange={(e) => setUserTypeFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -272,8 +272,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>Location</h4>
-            <select 
-              value={locationFilter} 
+            <select
+              value={locationFilter}
               onChange={(e) => setLocationFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -286,8 +286,8 @@ function StudentDashboard() {
             </select>
           </div>
 
-          <button 
-            className="clear-filters-button" 
+          <button
+            className="clear-filters-button"
             onClick={clearAllFilters}
           >
             Clear All Filters
@@ -308,7 +308,7 @@ function StudentDashboard() {
               {statusFilter && <span className="filter-tag">Status: {statusFilter}</span>}
               {userTypeFilter && <span className="filter-tag">User: {userTypeFilter}</span>}
               {locationFilter && <span className="filter-tag">Location: {locationFilter}</span>}
-              {(categoryFilter || statusFilter || userTypeFilter || locationFilter) && 
+              {(categoryFilter || statusFilter || userTypeFilter || locationFilter) &&
                 <button className="clear-tag" onClick={clearAllFilters}>Clear All</button>}
             </div>
           </div>
@@ -327,7 +327,12 @@ function StudentDashboard() {
         <div className="events-container">
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event) => (
-              <div key={event.id} className="event-card">
+              <div
+                key={event.id}
+                className="event-card"
+                onClick={() => navigate(`/event/${event.id}`, { state: event })}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="event-category-tag">
                   {categories.find(cat => cat.name === event.category)?.emoji || "🎪"} {event.category || "Event"}
                 </div>
@@ -337,14 +342,19 @@ function StudentDashboard() {
                   className="event-main-image"
                 />
                 <h2 className="event-title">{event.eventName || "No Event Name"}</h2>
-                <p className="event-detail"><strong>Participant:</strong> {event.participantName || "No Name"}</p>
+                {/* <p className="event-detail"><strong>Participant:</strong> {event.participantName || "No Name"}</p> */}
                 <p className="event-detail"><strong>Date:</strong> {event.eventDate || "No Date"}</p>
                 <p className="event-detail"><strong>Time:</strong> {event.eventTime || "No Time"}</p>
                 <p className="event-detail"><strong>Location:</strong> {event.location || "No Location"}</p>
                 <p className="event-detail"><strong>Ticket Price:</strong> {event.ticketPrice || "Not Available"}</p>
+                <p className="event-detail"><strong>Description:</strong> {event.description || "Not Available"}</p>
+
                 <button
                   className="book-button"
-                  onClick={() => navigate(`/event/${event.id}`, { state: event })}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevents the card's onClick from triggering
+                    navigate(`/event/${event.id}`, { state: event });
+                  }}
                 >
                   Book Now
                 </button>

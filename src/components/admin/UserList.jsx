@@ -1,6 +1,7 @@
 // AdminPanel.jsx
 import React, { useState, useEffect } from 'react';
 import { collection, getFirestore, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import "./userList.css";
 
 const UserList = ({ app }) => {
   const db = getFirestore(app);
@@ -64,28 +65,25 @@ const UserList = ({ app }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Admin Panel</h1>
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold">Total Users</h2>
+    <div className="admin-container">
+      <h1 className="admin-title">Admin Panel</h1>
+      <div className="admin-section">
+        <h2 className="admin-heading">Total Users</h2>
         <p>{users.length}</p>
       </div>
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold">Total Connections</h2>
+      <div className="admin-section">
+        <h2 className="admin-heading">Total Connections</h2>
         <p>{connectionsLength}</p>
       </div>
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold">Total Connection Requests</h2>
+      <div className="admin-section">
+        <h2 className="admin-heading">Total Connection Requests</h2>
         <p>{connectionRequestsLength}</p>
       </div>
-      <ul>
+      <ul className="user-list">
         {users.map((user) => (
-          <li key={user.id} className="flex items-center justify-between border-b py-2">
+          <li key={user.id} className="user-item">
             <span>{user.displayName || user.email}</span>
-            <button
-              onClick={() => handleDeleteUser(user.id)}
-              className="bg-red-500 text-white px-3 py-1 rounded"
-            >
+            <button onClick={() => handleDeleteUser(user.id)} className="delete-btn">
               Delete
             </button>
           </li>

@@ -72,6 +72,7 @@ function EventDetails() {
             eventDate: event.eventDate,
             eventTime: event.eventTime,
             eventLocation: event.location || "N/A",
+            eventDescription: event.description,
           };
 
           try {
@@ -120,9 +121,9 @@ function EventDetails() {
         />
       )}
 
-      <p>
+      {/* <p>
         <strong>Participant:</strong> {event.participantName || "N/A"}
-      </p>
+      </p> */}
       <p>
         <strong>Date:</strong> {event.eventDate || "N/A"}
       </p>
@@ -143,7 +144,7 @@ function EventDetails() {
           <button className="back-button" onClick={() => navigate(-1)}>
             Go Back
           </button>
-          <button className="book-now-button" onClick={handlePayment}>
+          <button className="back-button" onClick={handlePayment}>
             Book Now
           </button>
         </div>

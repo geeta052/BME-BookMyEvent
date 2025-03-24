@@ -141,39 +141,56 @@ const HomePage = () => {
                   <span className="event-date">📅 {event.date}</span>
                   <span className="event-location">📍 {event.location}</span>
                 </div>
-                <Link to={`/events/${event.id}`} className="view-event">View Details</Link>
+                <Link to="http://localhost:3000/dashboard/StudentDashboard/:userId" className="view-event">View Details</Link>
               </div>
             </div>
           ))}
         </div>
         <div className="view-all-container">
-          <Link to="/events" className="view-all">View All Events</Link>
+          <Link to="http://localhost:3000/dashboard/StudentDashboard/:userId" className="view-all">View All Events</Link>
         </div>
       </section>
 
       <section id="features" className="features">
         <h2>Features</h2>
         <div className="feature-cards">
-          <div className="card">
+          {/* <div className="card">
             <div className="card-icon">🔍</div>
             <h3>Discover Events</h3>
             <p>Find events tailored to your preferences and location with advanced filtering options.</p>
-          </div>
+          </div> */}
+          <a href="http://localhost:3000/dashboard/StudentDashboard/:userId" style={{ textDecoration: "none" }}>
+            <div className="card">
+              <div className="card-icon">🔍</div>
+              <h3>Discover Events</h3>
+              <p>Find events tailored to your preferences and location with advanced filtering options.</p>
+            </div>
+          </a>
+
+
+          <a href="http://localhost:3000/event/clean" style={{ textDecoration: "none" }}>
+
           <div className="card">
             <div className="card-icon">🎟️</div>
             <h3>Book Tickets</h3>
             <p>Easily register and book tickets for events with secure payment processing.</p>
           </div>
+          </a>
+
           <div className="card">
             <div className="card-icon">🤖</div>
             <h3>AI Chatbot</h3>
             <p>Get instant assistance with our intelligent chatbot to help find perfect events.</p>
           </div>
+
+          <a href="http://localhost:3000/chat/:chatRoomId" style={{ textDecoration: "none" }}>
+
           <div className="card">
             <div className="card-icon">🌐</div>
             <h3>Connect with Communities</h3>
             <p>Join clubs and societies to enhance your campus life and build networks.</p>
           </div>
+          </a>
         </div>
       </section>
 
@@ -204,34 +221,35 @@ const HomePage = () => {
       </section>
 
       <section id="event-categories" className="event-categories">
-        <h2>Event Categories</h2>
-        <div className="category-container">
-          <Link to="/events/category/academic" className="category-item">
-            <div className="category-icon">🎓</div>
-            <h3>Academic</h3>
-          </Link>
-          <Link to="/events/category/cultural" className="category-item">
-            <div className="category-icon">🎭</div>
-            <h3>Cultural</h3>
-          </Link>
-          <Link to="/events/category/sports" className="category-item">
-            <div className="category-icon">⚽</div>
-            <h3>Sports</h3>
-          </Link>
-          <Link to="/events/category/technology" className="category-item">
-            <div className="category-icon">💻</div>
-            <h3>Technology</h3>
-          </Link>
-          <Link to="/events/category/arts" className="category-item">
-            <div className="category-icon">🎨</div>
-            <h3>Arts</h3>
-          </Link>
-          <Link to="/events/category/career" className="category-item">
-            <div className="category-icon">💼</div>
-            <h3>Career</h3>
-          </Link>
-        </div>
-      </section>
+  <h2>Event Categories</h2>
+  <div className="category-container">
+    <div className="category-item">
+      <div className="category-icon">🎓</div>
+      <h3>Academic</h3>
+    </div>
+    <div className="category-item">
+      <div className="category-icon">🎭</div>
+      <h3>Cultural</h3>
+    </div>
+    <div className="category-item">
+      <div className="category-icon">⚽</div>
+      <h3>Sports</h3>
+    </div>
+    <div className="category-item">
+      <div className="category-icon">💻</div>
+      <h3>Technology</h3>
+    </div>
+    <div className="category-item">
+      <div className="category-icon">🎨</div>
+      <h3>Arts</h3>
+    </div>
+    <div className="category-item">
+      <div className="category-icon">💼</div>
+      <h3>Career</h3>
+    </div>
+  </div>
+</section>
+
 
       <section id="testimonials" className="testimonials">
         <h2>What Users Say</h2>
