@@ -169,6 +169,7 @@ function StudentDashboard() {
 
     fetchRecommendedEvents();
   }, []);
+  
 
   // Fetch Location-Based Recommended Events
   useEffect(() => {
@@ -357,38 +358,65 @@ function StudentDashboard() {
 
         {/* Recommended Events Section (API-based) */}
         <div className="recommended-events-container">
-          <h2>Recommended Events (Based on Preferences)</h2>
-          {recommendedEvents.length > 0 ? (
-            recommendedEvents.map((event) => (
-              <div key={event.id} className="recommended-event-card">
-                <h3>{event.eventName}</h3>
-                <p><strong>Date:</strong> {event.eventDate || "N/A"}</p>
-                <p><strong>Time:</strong> {event.eventTime || "N/A"}</p>
-                <img src={event.images[0] || "https://via.placeholder.com/100"} alt={event.eventName} className="recommended-event-image" />
+      <h2 className="section-title">🎯 Recommended Events (Based on Preferences)</h2>
+      
+      {recommendedEvents.length === 0 ? (
+        <p className="no-events-message">No recommended events at the moment.</p>
+      ) : (
+        <div className="events-grid">
+          {recommendedEvents.map(event => (
+            <div 
+              key={event.id} 
+              className="event-card" 
+              onClick={() => navigate(`/event/${event.id}`, { state: event })} 
+              style={{ cursor: "pointer" }} // Makes it visually clear that it's clickable
+            >
+              <div className="event-category-tag">
+                {categories.find(cat => cat.name === event.category)?.emoji || "🎪"} {event.category || "Event"}
               </div>
-            ))
-          ) : (
-            <p>No recommendations found</p>
-          )}
+              <img
+                src={event.images[0] || "https://via.placeholder.com/300"}
+                alt="Event Main"
+                className="event-main-image"
+              />
+              <h2 className="event-title">{event.eventName || "No Event Name"}</h2>
+              <p className="event-detail"><strong>Participant:</strong> {event.participantName || "No Name"}</p>
+              <p className="event-detail"><strong>Date:</strong> {event.eventDate || "No Date"}</p>
+              <p className="event-detail"><strong>Time:</strong> {event.eventTime || "No Time"}</p>
+              <p className="event-detail"><strong>Location:</strong> {event.location || "No Location"}</p>
+            </div>
+          ))}
         </div>
+      )}
+    </div>
+  
 
-        {/* Recommended Events Section (Location-based) */}
-        <div className="recommended-events-container">
-          <h2>Recommended Events (Near You)</h2>
-          {locationRecommendedEvents.length > 0 ? (
-            locationRecommendedEvents.map((event) => (
-              <div key={event.id} className="recommended-event-card">
-                <h3>{event.eventName}</h3>
-                <p><strong>Date:</strong> {event.eventDate || "N/A"}</p>
-                <p><strong>Time:</strong> {event.eventTime || "N/A"}</p>
-                <p><strong>Location:</strong> {event.location || "Unknown"}</p>
-                <img src={event.images[0] || "https://via.placeholder.com/100"} alt={event.eventName} className="recommended-event-image" />
-              </div>
-            ))
-          ) : (
-            <p>No events near your location</p>
-          )}
-        </div>
+    <div className="recommended-events-container">
+      <h2>Recommended Events (Near You)</h2>
+      {locationRecommendedEvents.length > 0 ? (
+        locationRecommendedEvents.map((event) => (
+          <div 
+            key={event.id} 
+            className="recommended-event-card"
+            onClick={() => navigate(`/event/${event.id}`, { state: event })} 
+            style={{ cursor: "pointer" }} // Makes it clear it's clickable
+          >
+            <h3>{event.eventName}</h3>
+            <p><strong>Date:</strong> {event.eventDate || "N/A"}</p>
+            <p><strong>Time:</strong> {event.eventTime || "N/A"}</p>
+            <p><strong>Location:</strong> {event.location || "Unknown"}</p>
+            <img 
+              src={event.images[0] || "https://via.placeholder.com/100"} 
+              alt={event.eventName} 
+              className="recommended-event-image" 
+            />
+          </div>
+        ))
+      ) : (
+        <p>No events near your location</p>
+      )}
+    </div>
+ 
       </div>
     </div>
   );
