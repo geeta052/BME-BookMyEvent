@@ -348,6 +348,7 @@ function StudentDashboard() {
                 <p className="event-detail"><strong>Location:</strong> {event.location || "No Location"}</p>
                 <p className="event-detail"><strong>Ticket Price:</strong> {event.ticketPrice || "Not Available"}</p>
                 <p className="event-detail"><strong>Description:</strong> {event.description || "Not Available"}</p>
+                <p className="event-detail"><strong>Category:</strong> {event.category || "Not Available"}</p>
 
                 <button
                   className="book-button"
