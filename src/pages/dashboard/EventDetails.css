@@ -1,84 +1,80 @@
-.event-details-container {
-    max-width: 800px;
-    margin: 40px auto;
+/* EventDetails.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .event-details-container {
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
     text-align: center;
-}
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
   
-.event-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: opacity 0.5s ease-in-out;
-}
-  
-.event-title {
-    font-size: 24px;
+  .event-title {
+    font-size: 28px;
     font-weight: bold;
-    margin: 20px 0;
-    color: #333;
-}
+    color: white;
+    margin-bottom: 15px;
+  }
   
-.event-info {
-    font-size: 18px;
-    color: #555;
+  .event-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  p {
+    font-size: 16px;
     margin: 10px 0;
-}
+    color: white;
+  }
   
-.button-container {
+  .button-container {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-around;
     margin-top: 20px;
-}
+  }
   
-.back-button, .book-now-button {
-    padding: 12px 20px;
-    font-size: 18px;
-    border-radius: 5px;
+  button {
+    background: linear-gradient(45deg, #ff7eb3, #ff758c);
+    color: white;
     border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
     cursor: pointer;
     transition: 0.3s;
-}
+  }
   
-.back-button {
-    background-color: #8B4513; /* SaddleBrown */
-    color: white;
-}
+  button:hover {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    transform: scale(1.05);
+  }
   
-.back-button:hover {
-    background-color: #A0522D; /* Slightly lighter brown */
-}
+  .back-button {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+  }
   
-.book-now-button {
-    background-color: #007bff;
-    color: white;
-}
+  .back-button:hover {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+  }
   
-.book-now-button:hover {
-    background-color: #0056b3;
-}
-  
-.loading-text {
-    text-align: center;
+  .ticket-purchased {
     font-size: 18px;
-    color: #777;
-}
-  
-.error-text {
-    text-align: center;
-    font-size: 18px;
-    color: red;
-}
-
-.ticket-purchased {
-    font-size: 20px;
-    color: green;
     font-weight: bold;
+    color: #ffdf6c;
     margin-top: 20px;
   }
   

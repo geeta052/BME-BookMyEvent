@@ -1,31 +1,111 @@
-.userList {
-    flex: 4;
+/* userList.css */
+.admin-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.admin-section {
+  background-color: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-heading {
+  color: #34495e;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.admin-section p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2980b9;
+  margin: 0;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.user-item {
+  background-color: white;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.user-item:hover {
+  transform: translateX(5px);
+}
+
+.user-item span {
+  color: #2c3e50;
+  font-size: 1rem;
+}
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+  padding: 4px 8px; /* Reduced padding */
+  min-width: auto; /* Remove unnecessary minimum width */
+  text-align: center;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-container {
+    margin: 1rem;
+    padding: 1rem;
   }
-  
-  .userListUser {
-    display: flex;
-    align-items: center;
+
+  .admin-title {
+    font-size: 2rem;
   }
-  
-  .userListImg {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
+
+  .admin-section {
+    padding: 1rem;
   }
-  
-  .userListEdit{
-      border: none;
-      border-radius: 10px;
-      padding: 5px 10px;
-      background-color: #3bb077;
-      color: white;
-      cursor: pointer;
-      margin-right: 20px;
+
+  .admin-heading {
+    font-size: 1rem;
   }
-  
-  .userListDelete{
-      color: red;
-      cursor: pointer;
+
+  .admin-section p {
+    font-size: 1.2rem;
   }
+
+  .user-item {
+    padding: 0.8rem 1rem;
+  }
+}
