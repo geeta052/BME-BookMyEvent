@@ -61,6 +61,7 @@ const Signup = () => {
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
             required
+            style={{ color: "black" }}
           />
           <label htmlFor="email">Email:</label>
           <input
