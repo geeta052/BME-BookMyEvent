@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import "./StudentDashboard.css";
 import { fetchDataAndCluster } from "./recommendation"; // Import clustering function
 
+import Trending from "./Trending";
+
 function StudentDashboard() {
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
@@ -79,7 +81,7 @@ function StudentDashboard() {
 
     // Apply location filter
     if (locationFilter) {
-      result = result.filter(event =>
+      result = result.filter(event => 
         event.location && event.location.toLowerCase().includes(locationFilter.toLowerCase())
       );
     }
@@ -133,7 +135,7 @@ function StudentDashboard() {
       setEvents((prevEvents) =>
         prevEvents.map((event) => {
           if (!event.images || event.images.length <= 1) return event;
-
+          
           const updatedImages = [...event.images];
           const firstImage = updatedImages.shift();
           updatedImages.push(firstImage);
@@ -209,15 +211,16 @@ function StudentDashboard() {
     <div className="dashboard-layout">
       {/* Sidebar for filters */}
       <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+
         <div className="sidebar-header">
           <h3>Filters</h3>
         </div>
-
+        
         <div className="sidebar-content">
           <div className="filter-section">
             <h4>Sort By</h4>
-            <select
-              value={sortBy}
+            <select 
+              value={sortBy} 
               onChange={(e) => setSortBy(e.target.value)}
               className="filter-dropdown"
             >
@@ -229,8 +232,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>Event Categories</h4>
-            <select
-              value={categoryFilter}
+            <select 
+              value={categoryFilter} 
               onChange={(e) => setCategoryFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -245,8 +248,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>Status</h4>
-            <select
-              value={statusFilter}
+            <select 
+              value={statusFilter} 
               onChange={(e) => setStatusFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -259,8 +262,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>User Type</h4>
-            <select
-              value={userTypeFilter}
+            <select 
+              value={userTypeFilter} 
               onChange={(e) => setUserTypeFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -273,8 +276,8 @@ function StudentDashboard() {
 
           <div className="filter-section">
             <h4>Location</h4>
-            <select
-              value={locationFilter}
+            <select 
+              value={locationFilter} 
               onChange={(e) => setLocationFilter(e.target.value)}
               className="filter-dropdown"
             >
@@ -287,8 +290,8 @@ function StudentDashboard() {
             </select>
           </div>
 
-          <button
-            className="clear-filters-button"
+          <button 
+            className="clear-filters-button" 
             onClick={clearAllFilters}
           >
             Clear All Filters
@@ -309,7 +312,7 @@ function StudentDashboard() {
               {statusFilter && <span className="filter-tag">Status: {statusFilter}</span>}
               {userTypeFilter && <span className="filter-tag">User: {userTypeFilter}</span>}
               {locationFilter && <span className="filter-tag">Location: {locationFilter}</span>}
-              {(categoryFilter || statusFilter || userTypeFilter || locationFilter) &&
+              {(categoryFilter || statusFilter || userTypeFilter || locationFilter) && 
                 <button className="clear-tag" onClick={clearAllFilters}>Clear All</button>}
             </div>
           </div>
@@ -328,12 +331,7 @@ function StudentDashboard() {
         <div className="events-container">
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event) => (
-              <div
-                key={event.id}
-                className="event-card"
-                onClick={() => navigate(`/event/${event.id}`, { state: event })}
-                style={{ cursor: 'pointer' }}
-              >
+              <div key={event.id} className="event-card">
                 <div className="event-category-tag">
                   {categories.find(cat => cat.name === event.category)?.emoji || "🎪"} {event.category || "Event"}
                 </div>
@@ -343,20 +341,21 @@ function StudentDashboard() {
                   className="event-main-image"
                 />
                 <h2 className="event-title">{event.eventName || "No Event Name"}</h2>
-                {/* <p className="event-detail"><strong>Participant:</strong> {event.participantName || "No Name"}</p> */}
+                <p className="event-detail"><strong>Participant:</strong> {event.participantName || "No Name"}</p>
                 <p className="event-detail"><strong>Date:</strong> {event.eventDate || "No Date"}</p>
                 <p className="event-detail"><strong>Time:</strong> {event.eventTime || "No Time"}</p>
                 <p className="event-detail"><strong>Location:</strong> {event.location || "No Location"}</p>
                 <p className="event-detail"><strong>Ticket Price:</strong> {event.ticketPrice || "Not Available"}</p>
-                <p className="event-detail"><strong>Description:</strong> {event.description || "Not Available"}</p>
-                <p className="event-detail"><strong>Category:</strong> {event.category || "Not Available"}</p>
+<<<<<<< HEAD
+=======
+                //<p className="event-detail"><strong>Description:</strong> {event.description || "Not Available"}</p>
+                //<p className="event-detail"><strong>Category:</strong> {event.category || "Not Available"}</p>
 
+>>>>>>> main
                 <button
                   className="book-button"
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevents the card's onClick from triggering
-                    navigate(`/event/${event.id}`, { state: event });
-                  }}
+                  onClick={() => navigate(`/event/${event.id}`, { state: event })}
+
                 >
                   Book Now
                 </button>
@@ -367,42 +366,45 @@ function StudentDashboard() {
           )}
         </div>
 
+
+        <Trending />
+
+
+
+
+
         {/* Recommended Events Section (API-based) */}
         <div className="recommended-events-container">
-      <h2 className="section-title">🎯 Recommended Events (Based on Preferences)</h2>
-      
-      {recommendedEvents.length === 0 ? (
-        <p className="no-events-message">No recommended events at the moment.</p>
+      <h2>Recommended Events (Based on Preferences)</h2>
+      {recommendedEvents.length > 0 ? (
+        recommendedEvents.map((event) => (
+          <div
+            key={event.id}
+            className="recommended-event-card"
+            onClick={() => navigate(`/event/${event.id}`, { state: event })}
+            style={{ cursor: "pointer" }} // Makes it clear it's clickable
+          >
+            <h3>{event.eventName}</h3>
+            <p><strong>Date:</strong> {event.eventDate || "N/A"}</p>
+            <p><strong>Time:</strong> {event.eventTime || "N/A"}</p>
+            <p><strong>Location:</strong> {event.location || "N/A"}</p>
+            <img
+              src={event.images[0] || "https://via.placeholder.com/100"}
+              alt={event.eventName}
+              className="recommended-event-image"
+            />
+          </div>
+        ))
       ) : (
-        <div className="events-grid">
-          {recommendedEvents.map(event => (
-            <div 
-              key={event.id} 
-              className="event-card" 
-              onClick={() => navigate(`/event/${event.id}`, { state: event })} 
-              style={{ cursor: "pointer" }} // Makes it visually clear that it's clickable
-            >
-              <div className="event-category-tag">
-                {categories.find(cat => cat.name === event.category)?.emoji || "🎪"} {event.category || "Event"}
-              </div>
-              <img
-                src={event.images[0] || "https://via.placeholder.com/300"}
-                alt="Event Main"
-                className="event-main-image"
-              />
-              <h2 className="event-title">{event.eventName || "No Event Name"}</h2>
-              <p className="event-detail"><strong>Participant:</strong> {event.participantName || "No Name"}</p>
-              <p className="event-detail"><strong>Date:</strong> {event.eventDate || "No Date"}</p>
-              <p className="event-detail"><strong>Time:</strong> {event.eventTime || "No Time"}</p>
-              <p className="event-detail"><strong>Location:</strong> {event.location || "No Location"}</p>
-            </div>
-          ))}
-        </div>
+        <p>No recommendations found</p>
       )}
     </div>
-  
 
-    <div className="recommended-events-container">
+    
+
+
+        {/* Recommended Events Section (Location-based) */}
+        <div className="recommended-events-container">
       <h2>Recommended Events (Near You)</h2>
       {locationRecommendedEvents.length > 0 ? (
         locationRecommendedEvents.map((event) => (
@@ -427,7 +429,6 @@ function StudentDashboard() {
         <p>No events near your location</p>
       )}
     </div>
- 
       </div>
     </div>
   );

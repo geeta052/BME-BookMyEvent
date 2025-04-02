@@ -24,7 +24,7 @@ app.post("/create-order", async (req, res) => {
     if (!amount) return res.status(400).json({ error: "Amount is required" });
 
     const order = await razorpay.orders.create({
-      amount: amount * 100,
+      amount: amount * 100 ,// Amount should be in paise (cents)
       currency: "INR",
       receipt: `receipt_${Math.random()}`,
     });

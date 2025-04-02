@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { db } from '../../firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 function AdminDashboard() {
     const [content, setContent] = useState([]);
     const [loading, setLoading] = useState(false);
     const [events, setEvents] = useState([]);
     const [stats, setStats] = useState({ institutions: 0, students: 0, events: 0 });
-
-    const urls = [
-        'http://localhost:3001/events',
-        'http://localhost:3001/another'
-    ];
+    const [urls, setUrls] = useState([]);
 
     useEffect(() => {
-        const fetchStats = async () => {
+        const fetchStatsAndUrls = async () => {
             try {
                 const institutesSnapshot = await getDocs(collection(db, 'institutes'));
                 const studentsSnapshot = await getDocs(collection(db, 'users'));
@@ -26,15 +22,29 @@ function AdminDashboard() {
                     students: studentsSnapshot.size,
                     events: eventsSnapshot.size
                 });
+
+                // Fetch URLs where allowWebCrawling is true
+                const q = query(collection(db, 'institutes'), where('allowWebCrawling', '==', true));
+                const eligibleInstitutesSnapshot = await getDocs(q);
+                const eventLinks = eligibleInstitutesSnapshot.docs
+                    .map(doc => doc.data().eventPageLink)
+                    .filter(link => link); // Ensure no null/undefined values
+
+                setUrls(eventLinks);
             } catch (error) {
-                console.error('Error fetching stats:', error);
+                console.error('Error fetching data:', error);
             }
         };
 
-        fetchStats();
+        fetchStatsAndUrls();
     }, []);
 
     const handleCrawl = async () => {
+        if (urls.length === 0) {
+            alert('No valid event page links available for crawling.');
+            return;
+        }
+
         setLoading(true);
         try {
             const response = await axios.post('http://localhost:5000/crawl', { urls });
