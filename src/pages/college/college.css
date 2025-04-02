@@ -1,81 +1,312 @@
-/* college.css */
+/* Instagram Theme Colors */
+:root {
+  --instagram-pink: #E1306C;
+  --instagram-purple: #833AB4;
+  --instagram-gradient-start: #833AB4;
+  --instagram-gradient-middle: #C13584;
+  --instagram-gradient-end: #E1306C;
+  --instagram-light-pink: #FCE7F3;
+  --white: #FFFFFF;
+  --light-gray: #F5F5F5;
+  --medium-gray: #DBDBDB;
+  --dark-gray: #8E8E8E;
+  --text-dark: #262626;
+}
 
-/* Apply Instagram-style gradient background */
+/* Global Styles */
 body {
-    background: #000000;
-    background-attachment: fixed;
-    font-family: 'Arial', sans-serif;
-    color: #fff;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--light-gray);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header Styles */ 
+ header {
+  background: linear-gradient(45deg, var(--instagram-gradient-start), var(--instagram-gradient-middle), var(--instagram-gradient-end));
+  padding: 2rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  color: var(--white);
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  color: var(--white);
+  text-align: center;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Search and Filter Section */
+.search-section {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 1.9rem;
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  /* padding: 0.8rem 1rem; */
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--instagram-pink);
+  box-shadow: 0 0 0 2px rgba(225, 48, 108, 0.2);
+}
+
+select {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--instagram-purple);
+  box-shadow: 0 0 0 2px rgba(131, 58, 180, 0.2);
+}
+
+/* College Cards */
+.college-grid {
+  padding: 1rem 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.college-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--medium-gray);
+}
+
+.college-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.college-header {
+  background: linear-gradient(45deg, var(--instagram-purple), var(--instagram-pink));
+  color: var(--white);
+  padding: 1.2rem;
+}
+
+.college-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.college-header p {
+  margin: 0.3rem 0 0;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.college-content {
+  padding: 1.2rem;
+}
+
+.event-tag {
+  display: inline-block;
+  background: linear-gradient(45deg, #FEDA75, #FA7E1E, var(--instagram-pink));
+  color: var(--white);
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-list li {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0;
+}
+
+.event-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--instagram-purple);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.event-highlighted {
+  font-weight: 600;
+  color: var(--instagram-pink);
+}
+
+.college-footer {
+  padding: 1rem 1.2rem;
+  border-top: 1px solid var(--medium-gray);
+}
+
+.college-link {
+  color: var(--instagram-purple);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.college-link:hover {
+  color: var(--instagram-pink);
+}
+
+.college-link svg {
+  margin-left: 0.3rem;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-state p {
+  color: var(--dark-gray);
+  font-size: 1.25rem;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(45deg, var(--instagram-gradient-start), var(--instagram-gradient-middle), var(--instagram-gradient-end));
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+footer p {
+  color: var(--white);
+  text-align: center;
+  margin: 0;
+}
+
+footer .copyright {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+footer .tagline {
+  opacity: 0.8;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Instagram-inspired Loading Animation */
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loading-dots span {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: var(--instagram-pink);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+  background-color: var(--instagram-gradient-start);
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+  background-color: var(--instagram-gradient-middle);
+}
+
+.loading-dots span:nth-child(3) {
+  background-color: var(--instagram-gradient-end);
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  } 
+  40% { 
+    transform: scale(1.0);
+  }
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--instagram-purple), var(--instagram-pink));
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .college-grid {
+    grid-template-columns: 1fr;
   }
   
-  /* Container */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 40px;
+  header h1 {
+    font-size: 2rem;
   }
   
-  /* Headings */
-  h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    background: linear-gradient(to right, #ff9a9e, #fad0c4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .search-section {
+    margin-top: -1rem;
+    flex-direction: column;
   }
   
-  /* Search input */
-  input[type="text"] {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    color: #fff;
+  .filters {
+    margin-top: 1rem;
   }
-  
-  input[type="text"]::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  /* Dropdown */
-  select {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
-  /* College card styling */
-  .border {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .border:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Buttons */
-  button {
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
-    border: none;
-    color: white;
-    font-weight: bold;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  button:hover {
-    background: linear-gradient(to right, #ff89e9, #ff7eb3);
-  }
-  
+}
