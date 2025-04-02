@@ -8,7 +8,8 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Selection from "./pages/selection/Selection";
 import StudentDashboard from "./pages/dashboard/StudentDashboard";
-import EventDetails from "./pages/dashboard/EventDetails"; 
+import InstituteDashboard from "./pages/dashboard/InstituteDashboard";  // ✅ Import Institute Dashboard
+import EventDetails from "./pages/dashboard/EventDetails";
 import Eventuploader from "./pages/eventuploader";
 import Signup from "./pages/signup/Signup";
 import UserDetails from "./pages/home/Userdetails";
@@ -19,7 +20,7 @@ import AdminLoginForm from "./pages/details/admin";
 import InstituteLoginForm from "./pages/details/InstituteLogin";
 import AdminPage from "./pages/dashboard/AdminDashboard";
 import RegisteredEvents from "./pages/dashboard/RegisteredEvents";
-import Chat from "./pages/Chat"; 
+import Chat from "./pages/Chat";
 import About from "./pages/about/about";
 import College from "./pages/college/college";
 import { getEvents } from "./utils/eventService"; // 🔹 Import function to fetch events
@@ -27,10 +28,8 @@ import { getEvents } from "./utils/eventService"; // 🔹 Import function to fet
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   const { currentUser } = useContext(AuthContext);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [events, setEvents] = useState([]); // 🔹 Store events data
+  const [events, setEvents] = useState([]);
 
-  // 🔹 Fetch and preprocess events
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -66,11 +65,15 @@ function App() {
             <Route path="userlist" element={<RequireAuth><UserList /></RequireAuth>} />
             <Route path="admin-login" element={<AdminLoginForm />} />
             <Route path="admin" element={<RequireAuth><AdminPage /></RequireAuth>} />
-            <Route path="event/:id" element={<RequireAuth><EventDetails events={events} /></RequireAuth>} /> {/* 🔹 Pass events to EventDetails */}
-            <Route path="registered-events" element={<RequireAuth><RegisteredEvents events={events} /></RequireAuth>} /> {/* 🔹 Pass events to RegisteredEvents */}
+            <Route path="event/:id" element={<RequireAuth><EventDetails events={events} /></RequireAuth>} /> 
+            <Route path="registered-events" element={<RequireAuth><RegisteredEvents events={events} /></RequireAuth>} /> 
             <Route path="chat/:chatRoomId" element={<RequireAuth><Chat /></RequireAuth>} />
             <Route path="about" element={<About />} />
             <Route path="college" element={<College />} />
+            
+            <Route path="/dashboard/institute/:instituteId" element={<RequireAuth><InstituteDashboard /></RequireAuth>} />
+
+
 
 
           </Route>
@@ -81,14 +84,18 @@ function App() {
 }
 
 const DashboardRouter = () => {
-  const { dashboardType } = useParams();
+  const { dashboardType, userId } = useParams();
 
-  switch (dashboardType) {
-    case 'StudentDashboard':
+  switch (dashboardType.toLowerCase()) { // ✅ Ensure case-insensitivity
+    case 'studentdashboard':
       return <StudentDashboard />;
+      case 'institute': 
+      return <InstituteDashboard />;
+     // ✅ Correctly handles institute route
     default:
-      return <Navigate to="/" />;
+      return <Navigate to="/" />; // ✅ Prevents fallback to home page
   }
 };
+
 
 export default App;
