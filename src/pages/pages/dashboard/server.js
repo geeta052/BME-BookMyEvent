@@ -6,7 +6,7 @@ const puppeteer = require("puppeteer");
 require("dotenv").config();
 const { db } = require("./firebase"); // Firestore connection using Firebase Client SDK
 const { collection, getDocs, query, where } = require("firebase/firestore"); // Firestore methods
-const { calculateSimilarity } = require("../../utils/tfidfService.js"); // TF-IDF recommendation logic
+const { calculateSimilarity } = require("../../../utils/tfidfService"); // TF-IDF recommendation logic
 
 const app = express();
 app.use(express.json());
