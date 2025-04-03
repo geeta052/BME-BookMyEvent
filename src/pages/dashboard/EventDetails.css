@@ -1,0 +1,91 @@
+/* Instagram Color Theme */
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb) !important;
+  font-family: 'Arial', sans-serif;
+  color: #000;
+}
+
+/* Event Details Container */
+.event-details-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  /* box-shadow: 0 4px 10px rgba(255, 105, 180, 0.6); */
+  text-align: center;
+}
+
+/* Event Title */
+.event-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #bc2a8d; /* Instagram logo color */
+  margin-bottom: 12px;
+}
+
+/* Event Image */
+.event-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Paragraph & Text Colors */
+p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #333;
+}
+
+strong {
+  color: #6e1a52;
+}
+
+/* Ticket Status */
+.ticket-purchased {
+  font-size: 18px;
+  color: #27ae60;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Back Button */
+.back-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Gray Back Button */
+.back-button:first-child {
+  background: #ccc;
+  color: #333;
+}
+
+/* Primary Button with Gradient */
+.back-button:last-child {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: white;
+  font-weight: bold;
+}
+
+/* Button Hover Effect */
+.back-button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}

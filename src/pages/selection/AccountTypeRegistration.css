@@ -1,0 +1,106 @@
+/* AccountTypeRegistration.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(270deg, #e0eafc, #cfdef3, #a8c0e0, #f3e5f5);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.registration-container {
+    max-width: 400px;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+}
+
+h2 {
+    text-align: center;
+    color: black !important; /* Added !important to force the text color to black */
+    margin-bottom: 20px;
+}
+
+.radio-group {
+    margin-bottom: 20px;
+}
+
+.radio-label {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    color: black; /* Text color set to black */
+}
+
+.radio-label:hover {
+    background-color: #e7f0ff;
+}
+
+.radio-input {
+    display: none;
+}
+
+.radio-custom {
+    display: inline-block;
+    padding-left: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-custom::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007BFF;
+    border-radius: 50%;
+    background: white;
+    transition: background 0.3s;
+}
+
+.radio-input:checked + .radio-custom::before {
+    background-color: #007BFF;
+}
+
+.continue-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.continue-button:hover {
+    background-color: #0056b3;
+}

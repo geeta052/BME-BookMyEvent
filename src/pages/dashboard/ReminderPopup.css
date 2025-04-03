@@ -1,0 +1,151 @@
+.reminder-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .reminder-popup {
+    background-color: white;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: slideIn 0.3s ease;
+  }
+  
+  .reminder-header {
+    background: var(--instagram-gradient, linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%));
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+  }
+  
+  .reminder-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    animation: pulse 2s infinite;
+  }
+  
+  .reminder-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    flex-grow: 1;
+  }
+  
+  .reminder-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+  
+  .reminder-content {
+    padding: 20px;
+  }
+  
+  .reminder-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .reminder-content p {
+    margin: 8px 0;
+    color: #555;
+  }
+  
+  .reminder-content strong {
+    color: #222;
+  }
+  
+  .reminder-message {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #fff9ec;
+    border-left: 4px solid #f59e0b;
+    color: #b45309;
+    font-weight: 500;
+    border-radius: 4px;
+  }
+  
+  .reminder-actions {
+    display: flex;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  
+  .reminder-dismiss-btn, .reminder-view-btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .reminder-dismiss-btn {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .reminder-dismiss-btn:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .reminder-view-btn {
+    background: var(--instagram-gradient, linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%));
+    color: white;
+    border: none;
+  }
+  
+  .reminder-view-btn:hover {
+    opacity: 0.9;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @media (max-width: 480px) {
+    .reminder-popup {
+      width: 95%;
+    }
+    
+    .reminder-actions {
+      flex-direction: column;
+    }
+    
+    .reminder-dismiss-btn, .reminder-view-btn {
+      width: 100%;
+    }
+  }
