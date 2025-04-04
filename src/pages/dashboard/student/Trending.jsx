@@ -71,9 +71,9 @@ const Trending = () => {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
-      <h2 style={{ textAlign: "center" }}>🔥 Trending Events</h2>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px" }}>
-        {trendingEvents.map((event) => (
+  <h2 style={{ textAlign: "center", marginBottom: "30px" }}>🔥 Trending Events</h2>
+  <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px" }}>
+    {trendingEvents.map((event) => (
           <div
             key={event.id}
             className="recommended-event-card"

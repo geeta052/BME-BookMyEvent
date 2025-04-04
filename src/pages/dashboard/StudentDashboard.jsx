@@ -266,33 +266,33 @@ function StudentDashboard() {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className="dashboard-layout-custom">
       {/* Sidebar for filters */}
-      <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-        <div className="sidebar-header">
+      <div className={`sidebar-custom ${sidebarOpen ? 'open' : 'closed'}`}>
+        <div className="sidebar-header-custom">
           <h3>Filters</h3>
         </div>
         
-        <div className="sidebar-content">
-          <div className="filter-section">
+        <div className="sidebar-content-custom">
+          <div className="filter-section-custom">
             <h4>Sort By</h4>
             <select 
               value={sortBy} 
               onChange={(e) => setSortBy(e.target.value)}
-              className="filter-dropdown"
+              className="filter-dropdown-custom"
             >
               <option value="date">Date</option>
               <option value="price">Price</option>
               <option value="name">Name</option>
             </select>
           </div>
-
-          <div className="filter-section">
+  
+          <div className="filter-section-custom">
             <h4>Event Categories</h4>
             <select 
               value={categoryFilter} 
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="filter-dropdown"
+              className="filter-dropdown-custom"
             >
               <option value="">All Categories</option>
               {categories.map(cat => (
@@ -302,13 +302,13 @@ function StudentDashboard() {
               ))}
             </select>
           </div>
-
-          <div className="filter-section">
+  
+          <div className="filter-section-custom">
             <h4>Status</h4>
             <select 
               value={statusFilter} 
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="filter-dropdown"
+              className="filter-dropdown-custom"
             >
               <option value="">All Statuses</option>
               <option value="upcoming">Upcoming</option>
@@ -316,13 +316,13 @@ function StudentDashboard() {
               <option value="completed">Completed</option>
             </select>
           </div>
-
-          <div className="filter-section">
+  
+          <div className="filter-section-custom">
             <h4>User Type</h4>
             <select 
               value={userTypeFilter} 
               onChange={(e) => setUserTypeFilter(e.target.value)}
-              className="filter-dropdown"
+              className="filter-dropdown-custom"
             >
               <option value="">All Users</option>
               <option value="student">Student</option>
@@ -330,13 +330,13 @@ function StudentDashboard() {
               <option value="alumni">Alumni</option>
             </select>
           </div>
-
-          <div className="filter-section">
+  
+          <div className="filter-section-custom">
             <h4>Location</h4>
             <select 
               value={locationFilter} 
               onChange={(e) => setLocationFilter(e.target.value)}
-              className="filter-dropdown"
+              className="filter-dropdown-custom"
             >
               <option value="">All Locations</option>
               {uniqueLocations.map(location => (
@@ -346,56 +346,65 @@ function StudentDashboard() {
               ))}
             </select>
           </div>
-
+  
           <button 
-            className="clear-filters-button" 
+            className="clear-filters-button-custom" 
             onClick={clearAllFilters}
           >
             Clear All Filters
           </button>
         </div>
       </div>
+  
 
+
+
+
+
+
+  
       {/* Main content */}
-      <div className={`main-content ${sidebarOpen ? 'sidebar-open' : ''}`}>
+
+
+      <div className={`main-content-custom ${sidebarOpen ? 'sidebar-open' : ''}`}>
         {/* Top Header Section */}
-        <div className="dashboard-header">
-          <div className="header-left">
-            <button className="filter-toggle" onClick={toggleSidebar}>
-              <span className="filter-icon">&#9776;</span> Filters
+        <div className="dashboard-header-custom">
+          <div className="header-left-custom">
+            <button className="filter-toggle-custom" onClick={toggleSidebar}>
+              <span className="filter-icon-custom">&#9776;</span> Filters
             </button>
-            <div className="active-filters">
-              {categoryFilter && <span className="filter-tag">{categories.find(c => c.name === categoryFilter)?.emoji} {categoryFilter}</span>}
-              {statusFilter && <span className="filter-tag">Status: {statusFilter}</span>}
-              {userTypeFilter && <span className="filter-tag">User: {userTypeFilter}</span>}
-              {locationFilter && <span className="filter-tag">Location: {locationFilter}</span>}
+            <div className="active-filters-custom">
+              {categoryFilter && <span className="filter-tag-custom">{categories.find(c => c.name === categoryFilter)?.emoji} {categoryFilter}</span>}
+              {statusFilter && <span className="filter-tag-custom">Status: {statusFilter}</span>}
+              {userTypeFilter && <span className="filter-tag-custom">User: {userTypeFilter}</span>}
+              {locationFilter && <span className="filter-tag-custom">Location: {locationFilter}</span>}
               {(categoryFilter || statusFilter || userTypeFilter || locationFilter) && 
-                <button className="clear-tag" onClick={clearAllFilters}>Clear All</button>}
+                <button className="clear-tag-custom" onClick={clearAllFilters}>Clear All</button>}
             </div>
           </div>
           
-          <h1 className="dashboard-title">🔍 Browse Events</h1>
+          <h1 className="dashboard-title-custom"> Browse Events</h1>
           
-          <div className="calendar-section">
-            <div className="calendar-button" onClick={() => setIsCalendarOpen(true)}>
+          <div className="calendar-section-custom">
+            <div className="calendar-button-custom" onClick={() => setIsCalendarOpen(true)}>
               <FaCalendarAlt size={20} />
               <span>My Event Calendar</span>
             </div>
           </div>
-
-          <div className="header-right">
-            <button className="registered-events-button" onClick={() => navigate("/registered-events")}>
+  
+          <div className="header-right-custom">
+            <button className="registered-events-button-custom" onClick={() => navigate("/registered-events")}>
               View Registered Events
             </button>
           </div>
         </div>
-
+  
         {/* Events with fixed card structure - removed onClick from the card */}
-        <div className="events-container">
+        <div className="events-container-custom">
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event) => (
-              <div className="event-card" key={event.id}>
-                <div className="event-category-tag">
+              <div className="event-card-custom" key={event.id}>
+                <div className="event-category-tag-custom">
                   {categories.find(cat => cat.name === event.category)?.emoji} {event.category || "Uncategorized"}
                 </div>
                 
@@ -403,28 +412,28 @@ function StudentDashboard() {
                   <img 
                     src={event.images[0]} 
                     alt={event.eventName} 
-                    className="event-main-image"
+                    className="event-main-image-custom"
                   />
                 ) : (
-                  <div className="event-placeholder-image">No Image</div>
+                  <div className="event-placeholder-image-custom">No Image</div>
                 )}
                 
-                <h3 className="event-title">{event.eventName}</h3>
-                <p className="event-detail">
+                <h3 className="event-title-custom">{event.eventName}</h3>
+                <p className="event-detail-custom">
                   <strong>Date:</strong> {event.eventDate ? new Date(event.eventDate).toLocaleDateString() : "TBD"}
                 </p>
-                <p className="event-detail">
+                <p className="event-detail-custom">
                   <strong>Time:</strong> {event.eventTime || "TBD"}
                 </p>
-                <p className="event-detail">
+                <p className="event-detail-custom">
                   <strong>Location:</strong> {event.location || "TBD"}
                 </p>
-                <p className="event-detail">
+                <p className="event-detail-custom">
                   <strong>Price:</strong> ${event.ticketPrice || "Free"}
                 </p>
                 
                 <button 
-                  className="book-button"
+                  className="book-button-custom"
                   onClick={() => navigate(`/event/${event.id}`, { state: event })}
                 >
                   View Details
@@ -432,18 +441,18 @@ function StudentDashboard() {
               </div>
             ))
           ) : (
-            <div className="no-events-message">
+            <div className="no-events-message-custom">
               No events found matching your filters. Try adjusting your search criteria.
             </div>
           )}
         </div>
-
+  
         {/* Component sections */}
         <Trending />
         <Recommendap />
         <RecommendedEvents />
       </div>
-
+  
       {/* Calendar Popup */}
       {isCalendarOpen && (
         <CalendarPopup 
@@ -453,7 +462,7 @@ function StudentDashboard() {
           registeredEvents={registeredEvents}
         />
       )}
-
+  
       {/* Reminder Popup */}
       {showReminderPopup && reminderEvent && (
         <ReminderPopup 
@@ -463,6 +472,7 @@ function StudentDashboard() {
       )}
     </div>
   );
+  
 }
 
 export default StudentDashboard;

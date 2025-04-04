@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { fetchDataAndCluster } from "../recommendation"; // Import clustering function
-import "./StudentDashboard.css"; // Reusing the same CSS
 
 function RecommendedEvents() {
   const [locationRecommendedEvents, setLocationRecommendedEvents] = useState([]); // State for location-based recommendations
@@ -59,32 +58,65 @@ function RecommendedEvents() {
   }
 
   return (
-    <div className="recommended-events-container">
-      <h2>Recommended Events (Near You)</h2>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h2 style={{ textAlign: "center" }}>📍 Recommended Events (Near You)</h2>
       {locationRecommendedEvents.length > 0 ? (
-        locationRecommendedEvents.map((event) => (
-          <div 
-            key={event.id} 
-            className="recommended-event-card"
-            onClick={() => handleEventClick(event)} 
-            style={{ cursor: "pointer" }} // Makes it clear it's clickable
-          >
-            <h3>{event.eventName}</h3>
-            <p><strong>Date:</strong> {event.eventDate || "N/A"}</p>
-            <p><strong>Time:</strong> {event.eventTime || "N/A"}</p>
-            <p><strong>Location:</strong> {event.location || "Unknown"}</p>
-            <img 
-              src={event.images[0] || "https://via.placeholder.com/100"} 
-              alt={event.eventName} 
-              className="recommended-event-image" 
-            />
-          </div>
-        ))
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "20px",
+            marginTop: "20px",
+          }}
+        >
+          {locationRecommendedEvents.map((event) => (
+            <div
+              key={event.id}
+              className="recommended-event-card"
+              onClick={() => handleEventClick(event)}
+              style={{
+                cursor: "pointer",
+                width: "300px",
+                borderRadius: "10px",
+                overflow: "hidden",
+                backgroundColor: "#f9f9f9",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                textAlign: "center",
+                transition: "transform 0.2s ease-in-out",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            >
+              <img
+                src={event.images?.[0] || "https://via.placeholder.com/300"}
+                alt={event.eventName || "Event Image"}
+                style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                loading="lazy"
+              />
+              <div style={{ padding: "10px" }}>
+                <h3 style={{ margin: "5px 0" }}>{event.eventName}</h3>
+                <p style={{ margin: "5px 0", fontSize: "14px" }}>
+                  📅 {event.eventDate || "N/A"} | 🕒 {event.eventTime || "N/A"}
+                </p>
+                <p style={{ margin: "5px 0", fontSize: "14px" }}>
+                  📍 {event.location || "Unknown"}
+                </p>
+                <p style={{ fontWeight: "bold", color: "#5cb85c" }}>
+                  📌 Nearby Event
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No events near your location</p>
+        <p style={{ marginTop: "20px", fontStyle: "italic" }}>
+          No events near your location
+        </p>
       )}
     </div>
   );
+  
 }
 
 export default RecommendedEvents;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
-import "./StudentDashboard.css"; // Maintaining the same styling
+import "./Recommendap.css"; 
 
 function Recommendap() {
   const [recommendedEvents, setRecommendedEvents] = useState([]);
@@ -33,32 +33,63 @@ function Recommendap() {
   }, []);
 
   return (
-    <div className="recommended-events-container">
-      <h2>Recommended Events (Based on Preferences)</h2>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h2 style={{ textAlign: "center" }}>🎯 Recommended Events (Based on Preferences)</h2>
       {recommendedEvents.length > 0 ? (
-        recommendedEvents.map((event) => (
-          <div
-            key={event.id}
-            className="recommended-event-card"
-            onClick={() => navigate(`/event/${event.id}`, { state: event })}
-            style={{ cursor: "pointer" }} // Makes it clear it's clickable
-          >
-            <h3>{event.eventName}</h3>
-            <p><strong>Date:</strong> {event.eventDate || "N/A"}</p>
-            <p><strong>Time:</strong> {event.eventTime || "N/A"}</p>
-            <p><strong>Location:</strong> {event.location || "N/A"}</p>
-            <img
-              src={event.images[0] || "https://via.placeholder.com/100"}
-              alt={event.eventName}
-              className="recommended-event-image"
-            />
-          </div>
-        ))
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "20px",
+            marginTop: "20px",
+          }}
+        >
+          {recommendedEvents.map((event) => (
+            <div
+              key={event.id}
+              className="recommended-event-card"
+              onClick={() => navigate(`/event/${event.id}`, { state: event })}
+              style={{
+                cursor: "pointer",
+                width: "300px",
+                borderRadius: "10px",
+                overflow: "hidden",
+                backgroundColor: "#f9f9f9",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                textAlign: "center",
+                transition: "transform 0.2s ease-in-out",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            >
+              <img
+                src={event.images?.[0] || "https://via.placeholder.com/300"}
+                alt={event.eventName || "Event Image"}
+                style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                loading="lazy"
+              />
+              <div style={{ padding: "10px" }}>
+                <h3 style={{ margin: "5px 0" }}>{event.eventName}</h3>
+                <p style={{ margin: "5px 0", fontSize: "14px" }}>
+                  📅 {event.eventDate || "N/A"} | 🕒 {event.eventTime || "N/A"}
+                </p>
+                <p style={{ margin: "5px 0", fontSize: "14px" }}>
+                  📍 {event.location || "N/A"}
+                </p>
+                <p style={{ fontWeight: "bold", color: "#0275d8" }}>
+                  ⭐ Recommended For You
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No recommendations found</p>
+        <p style={{ marginTop: "20px", fontStyle: "italic" }}>No recommendations found</p>
       )}
     </div>
   );
+  
 }
 
 export default Recommendap;

@@ -215,10 +215,10 @@ select:focus {
 }
 
 /* Footer */
-footer {
-  background: linear-gradient(45deg, var(--instagram-gradient-start), var(--instagram-gradient-middle), var(--instagram-gradient-end));
-  padding: 2rem 0;
-  margin-top: 3rem;
+.footer {
+  background-color: var(--black);
+  color: var(--white);
+  padding-top: 3rem;
 }
 
 footer p {
@@ -236,7 +236,7 @@ footer .tagline {
   opacity: 0.8;
   font-size: 0.875rem;
   margin-top: 0.5rem;
-}
+} 
 
 /* Instagram-inspired Loading Animation */
 .loading-dots {
