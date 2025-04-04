@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import "./AdminDashboard.css";
 
 function AdminDashboard() {
     const [content, setContent] = useState([]);
@@ -74,76 +75,51 @@ function AdminDashboard() {
         }
     };
 
-    return (
-        <div style={{ margin: '0 auto', maxWidth: '1200px', padding: '20px' }}>
-            <h1>Admin Dashboard</h1>
 
+
+    return (
+        <div className="dashboard-container">
+            <h1>Admin Dashboard</h1>
+    
             {/* Display Registered Data */}
-            <div style={{
-                display: 'flex', justifyContent: 'space-around', padding: '20px',
-                backgroundColor: '#f4f4f4', borderRadius: '8px', marginBottom: '20px'
-            }}>
+            <div className="stats-container">
                 <h3>Institutions: {stats.institutions}</h3>
                 <h3>Students: {stats.students}</h3>
                 <h3>Events: {stats.events}</h3>
             </div>
-
+    
             {/* Crawl Button */}
             <button
                 onClick={handleCrawl}
-                style={{
-                    padding: '10px 20px',
-                    fontSize: '16px',
-                    borderRadius: '5px',
-                    backgroundColor: '#4CAF50',
-                    color: 'white',
-                    border: 'none',
-                    cursor: 'pointer'
-                }}
+                className="crawl-button"
             >
                 Crawl Events
             </button>
-
+    
             {loading && <p>Loading...</p>}
-
+    
             {/* Crawled Content Display */}
-            <div style={{ marginTop: '40px' }}>
+            <div className="content-section">
                 {content.length > 0 && (
-                    <div style={{ marginBottom: '40px' }}>
+                    <div className="crawled-content">
                         <h2>Crawled Content</h2>
                         {content.map((html, index) => (
                             <div
                                 key={index}
-                                style={{
-                                    border: '1px solid #ccc',
-                                    padding: '10px',
-                                    backgroundColor: '#f9f9f9',
-                                    borderRadius: '8px',
-                                    wordWrap: 'break-word',
-                                    maxHeight: '500px',
-                                    overflowY: 'scroll',
-                                    marginBottom: '20px',
-                                }}
+                                className="crawled-item"
                                 dangerouslySetInnerHTML={{ __html: html }}
                             />
                         ))}
                     </div>
                 )}
-
+    
                 {/* Display Crawled Events */}
                 {events.length > 0 && (
                     <div>
                         <h2>Events Found</h2>
-                        <div
-                            style={{
-                                border: '1px solid #ccc',
-                                padding: '20px',
-                                backgroundColor: '#f4f4f4',
-                                borderRadius: '8px',
-                            }}
-                        >
+                        <div className="events-container">
                             {events.map((event, index) => (
-                                <div key={index} style={{ marginBottom: '20px' }}>
+                                <div key={index} className="event-item">
                                     <h3>{event.name}</h3>
                                     <p><strong>Date:</strong> {event.date}</p>
                                     <p><strong>Description:</strong> {event.description}</p>
@@ -156,6 +132,13 @@ function AdminDashboard() {
             </div>
         </div>
     );
+
+
+
+
 }
+
+
+
 
 export default AdminDashboard;

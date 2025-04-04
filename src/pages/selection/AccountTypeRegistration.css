@@ -1,12 +1,10 @@
-/* Ensure black background across the site */
 
-/* Remove the pink header - adjust the selector to match your actual header element */
-.header, 
+/* .header, 
 header, 
 .app-header, 
 .pink-header {
   display: none;
-}
+} */
 
 html, body {
     background-color: #000000 !important;

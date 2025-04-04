@@ -65,32 +65,36 @@ const UserList = ({ app }) => {
   };
 
   return (
-    <div className="admin-container">
-      <h1 className="admin-title">Admin Panel</h1>
-      <div className="admin-section">
-        <h2 className="admin-heading">Total Users</h2>
-        <p>{users.length}</p>
+    <>
+      <h1 className="admin-panel-title">Admin Panel</h1>
+      <div className="admin-stats-grid">
+        <div className="admin-panel-section">
+          <h2 className="admin-panel-heading">Total Users</h2>
+          <p className="admin-stat">{users.length}</p>
+        </div>
+        <div className="admin-panel-section">
+          <h2 className="admin-panel-heading">Total Connections</h2>
+          <p className="admin-stat">{connectionsLength}</p>
+        </div>
+        <div className="admin-panel-section">
+          <h2 className="admin-panel-heading">Total Connection Requests</h2>
+          <p className="admin-stat">{connectionRequestsLength}</p>
+        </div>
       </div>
-      <div className="admin-section">
-        <h2 className="admin-heading">Total Connections</h2>
-        <p>{connectionsLength}</p>
-      </div>
-      <div className="admin-section">
-        <h2 className="admin-heading">Total Connection Requests</h2>
-        <p>{connectionRequestsLength}</p>
-      </div>
-      <ul className="user-list">
+      <ul className="admin-user-list">
         {users.map((user) => (
-          <li key={user.id} className="user-item">
-            <span>{user.displayName || user.email}</span>
-            <button onClick={() => handleDeleteUser(user.id)} className="delete-btn">
+          <li key={user.id} className="admin-user-item">
+            <span className="admin-user-name">{user.displayName || user.email}</span>
+            <button onClick={() => handleDeleteUser(user.id)} className="admin-delete-btn">
               Delete
             </button>
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
+  
+
 };
 
 export default UserList;

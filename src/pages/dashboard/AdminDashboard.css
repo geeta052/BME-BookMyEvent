@@ -1,57 +1,196 @@
-.admin-dashboard {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Instagram Theme CSS for Admin Dashboard */
+/* Main color palette based on Instagram */
+:root {
+    --ig-primary: #405DE6;
+    --ig-gradient-start: #5851DB;
+    --ig-gradient-mid: #833AB4;
+    --ig-gradient-mid2: #C13584;
+    --ig-gradient-end: #FD1D1D;
+    --ig-light-gray: #F5F5F5;
+    --ig-medium-gray: #DBDBDB;
+    --ig-dark-gray: #262626;
+    --ig-white: #FFFFFF;
+    --ig-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    --ig-radius: 8px;
+  }
+  
+  /* Reset and base styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000; /* Black background */
+    color: var(--ig-dark-gray);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+  
+  /* Main container styling */
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Dashboard container */
+  .dashboard-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
+    background-color: var(--ig-white);
+    border-radius: var(--ig-radius);
+    box-shadow: var(--ig-shadow);
+  }
+  
+  /* Main title */
+  .dashboard-container h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--ig-dark-gray);
     text-align: center;
-}
-
-.stats-container {
+  }
+  
+  /* Stats container */
+  .stats-container {
     display: flex;
     justify-content: space-around;
+    background: var(--ig-white);
+    padding: 16px;
+    border-radius: var(--ig-radius);
     margin-bottom: 20px;
-}
-
-.stat-box {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-.crawl-button {
-    padding: 10px 20px;
+    box-shadow: var(--ig-shadow);
+    flex-wrap: wrap;
+    border: 1px solid var(--ig-medium-gray);
+  }
+  
+  .stats-container h3 {
     font-size: 16px;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
+    font-weight: 500;
+    margin: 8px 0;
+    color: var(--ig-dark-gray);
+  }
+  
+  /* Crawl button */
+  .crawl-button {
+    background: linear-gradient(45deg, var(--ig-gradient-start), var(--ig-gradient-mid), var(--ig-gradient-mid2), var(--ig-gradient-end));
+    color: var(--ig-white);
     border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
     cursor: pointer;
-}
-
-.content-container {
-    margin-top: 40px;
-}
-
-.crawled-content {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    word-wrap: break-word;
-    max-height: 500px;
-    overflow-y: scroll;
+    width: 100%;
+    margin: 16px 0;
+    transition: opacity 0.3s;
+  }
+  
+  .crawl-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Loading indicator */
+  .dashboard-container p {
+    text-align: center;
+    font-size: 14px;
+    color: var(--ig-dark-gray);
+    margin: 16px 0;
+  }
+  
+  /* Content section */
+  .content-section {
+    margin-top: 30px;
+  }
+  
+  .content-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ig-dark-gray);
+    border-bottom: 1px solid var(--ig-medium-gray);
+    padding-bottom: 10px;
     margin-bottom: 20px;
-}
-
-.events-list {
-    border: 1px solid #ccc;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.event-card {
-    margin-bottom: 20px;
-}
+  }
+  
+  /* Crawled content */
+  .crawled-content {
+    margin-bottom: 30px;
+  }
+  
+  .crawled-item {
+    background-color: var(--ig-light-gray);
+    padding: 16px;
+    border-radius: var(--ig-radius);
+    margin-bottom: 16px;
+    border: 1px solid var(--ig-medium-gray);
+  }
+  
+  /* Events container */
+  .events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  
+  /* Event item */
+  .event-item {
+    background-color: var(--ig-white);
+    border: 1px solid var(--ig-medium-gray);
+    border-radius: var(--ig-radius);
+    padding: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .event-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-item h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--ig-dark-gray);
+  }
+  
+  .event-item p {
+    font-size: 14px;
+    margin: 8px 0;
+    color: #555;
+    text-align: left;
+  }
+  
+  /* Fix for the current layout with colored sides */
+  .app-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .stats-container {
+      flex-direction: column;
+    }
+    
+    .events-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .dashboard-container {
+      margin: 10px;
+      padding: 15px;
+    }
+  }

@@ -1,111 +1,102 @@
+/* General container styling */
+/* Body background color */
 /* userList.css */
-.admin-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+html, body {
+  background-color: #f4f4f4 !important;  /* Add !important to force the background color */
+  margin: 0;
+  padding: 0;
 }
 
-.admin-title {
+
+/* Title styling */
+.admin-panel-title {
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-}
-
-.admin-section {
-  background-color: white;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.admin-heading {
-  color: #34495e;
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-.admin-section p {
-  font-size: 1.5rem;
+  font-size: 26px;
   font-weight: bold;
-  color: #2980b9;
-  margin: 0;
+  margin-bottom: 20px;
+  color: #ddd;
 }
 
-.user-list {
+/* Grid for statistics */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Individual stats boxes */
+.admin-panel-section {
+  background: #f5c1e0;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.admin-panel-section:hover {
+  transform: scale(1.05);
+}
+
+/* Stats heading and numbers */
+.admin-panel-heading {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.admin-stat {
+  font-size: 22px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* User list grid */
+.admin-user-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
   list-style: none;
   padding: 0;
-  margin-top: 2rem;
 }
 
-.user-item {
-  background-color: white;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* User item container */
+.admin-user-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.2s ease;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f8f8f8;
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.user-item:hover {
-  transform: translateX(5px);
+.admin-user-item:hover {
+  background: #eef2ff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.user-item span {
-  color: #2c3e50;
-  font-size: 1rem;
+/* User name styling */
+.admin-user-name {
+  font-weight: 500;
+  color: #333;
 }
-.delete-btn {
-  background-color: #e74c3c;
+
+/* Delete button */
+/* Delete button */
+.admin-delete-btn {
+  background: #000000;
   color: white;
   border: none;
-  border-radius: 4px;
+  padding: 4px 10px;
+  width: 80px;  /* Set a fixed width */
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-size: 14px;
-  padding: 4px 8px; /* Reduced padding */
-  min-width: auto; /* Remove unnecessary minimum width */
-  text-align: center;
+  transition: background 0.3s;
 }
 
-.delete-btn:hover {
-  background-color: #c0392b;
-}
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .admin-container {
-    margin: 1rem;
-    padding: 1rem;
-  }
 
-  .admin-title {
-    font-size: 2rem;
-  }
-
-  .admin-section {
-    padding: 1rem;
-  }
-
-  .admin-heading {
-    font-size: 1rem;
-  }
-
-  .admin-section p {
-    font-size: 1.2rem;
-  }
-
-  .user-item {
-    padding: 0.8rem 1rem;
-  }
+.admin-delete-btn:hover {
+  background: #cc0000;
 }
