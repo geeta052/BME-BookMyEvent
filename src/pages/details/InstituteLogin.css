@@ -1,156 +1,293 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    overflow-y: auto; 
-}
-
-.fullscreen-container {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #000000, #022c46);
-    padding: 40px 20px; 
-    overflow-y: auto; 
-}
-
-.form-container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: #1e1e1e; /* Dark background for form container */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-h2 {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 30px;
-    font-size: 2rem;
-}
-
-.form-row {
+:root {
+    --instagram-purple: #8a3ab9;
+    --instagram-blue: #4c68d7;
+    --instagram-pink: #cd486b;
+    --instagram-orange: #fbad50;
+    --instagram-yellow: #fccc63;
+    --instagram-gradient: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    --white: #ffffff;
+    --light-gray: #fafafa;
+    --medium-gray: #efefef;
+    --dark-gray: #8e8e8e;
+    --black: #262626;
+    --border-color: #dbdbdb;
+  }
+  
+  .fullscreen-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--light-gray);
+    padding: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .form-container {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    position: relative;
+    max-height: 90vh; /* Limit height to prevent overflow */
+    overflow-y: auto; /* Add scroll to form container */
+  }
+  
+  .form-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--instagram-gradient);
+  }
+  
+  .form-container h2 {
+    color: var(--black);
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
     margin-bottom: 25px;
-}
-
-.form-group {
-    flex: 1;
+    position: relative;
+  }
+  
+  .form-container h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--instagram-gradient);
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+  
+  /* Improved styling for the checkbox input and label */
+  input[type="checkbox"] {
+    margin-right: 3px; /* Further reduced space between checkbox and label */
+    vertical-align: middle;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    cursor: pointer;
+  }
+  
+  /* Optimized layout for the checkbox container */
+  .form-group div {
+    display: flex;
+    align-items: center;
+    gap: 3px; /* Reduced gap for tighter spacing */
+    padding: 2px 0;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 15px; /* Reduced gap between form elements */
+    margin-bottom: 15px; /* Reduced bottom margin */
+  }
+  
+  .form-group {
     display: flex;
     flex-direction: column;
-    margin-right: 20px;
-}
-
-.form-group:last-child {
-    margin-right: 0;
-}
-
-label {
-    margin-bottom: 10px;
-    font-size: 1.7rem;
-    color: #fff;
-}
-
-input, select, textarea {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    margin-bottom: 5px; /* Added small margin between stacked form groups */
+  }
+  
+  .form-group label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+  }
+  
+  .half-width {
+    flex: 1;
+  }
+  
+  .full-width {
     width: 100%;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1); 
-    margin-bottom: 5px;
-    background-color: #fff; /* White background for input fields */
-}
-
-input[type="checkbox"] {
-    width: auto;
-    margin-right: 8px;
-}
-
-button {
-    padding: 15px;
-    background-color: #af744c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin-top: 25px;
-    width: 100%; 
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); 
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-@media (max-width: 768px) {
-    .form-row {
-        flex-direction: column; 
-    }
-
-    .form-group {
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-}
-
-.form-row.align-right {
-    justify-content: flex-end;
-}
-
-@media (min-width: 769px) {
-    .form-group.half-width {
-        flex: 0 0 48%; 
-        margin-right: 20px; 
-    }
-
-    .form-group.half-width:last-child {
-        margin-right: 0; 
-    }
-}
-.dropdown {
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="url"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    padding: 10px 14px; /* Slightly reduced padding */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--light-gray);
+    font-size: 14px;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="url"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  textarea:focus {
+    border-color: var(--instagram-blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 104, 215, 0.15);
+  }
+  
+  .dropdown {
     position: relative;
-}
-
-.dropdown button {
+  }
+  
+  .dropdown button {
+    padding: 10px 12px; /* Reduced horizontal padding */
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: rgb(0, 0, 0);
-    text-align: left;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
     cursor: pointer;
-}
-
-.dropdown-menu {
+    color: #333;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dropdown button.selected {
+    color: var(--black);
+    background-color: #f7f7f7;
+  }
+  
+  .dropdown button::after {
+    content: "▼";
+    font-size: 10px;
+    color: var(--dark-gray);
+    margin-left: 8px;
+  }
+  
+  .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    z-index: 1;
-    max-height: 150px;
-    overflow-y: auto;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-menu label {
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 3px; /* Small gap between dropdown and button */
+  }
+  
+  .dropdown-menu label {
     display: block;
-    padding: 10px;
+    padding: 8px 12px; /* Reduced padding */
     cursor: pointer;
-}
-
-.dropdown-menu label:hover {
-    background-color: #f0f0f0;
-}
+    border-bottom: 1px solid var(--medium-gray);
+    margin: 0; /* Reset margin */
+  }
+  
+  .dropdown-menu label:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-menu label:hover {
+    background-color: var(--medium-gray);
+  }
+  
+  input[type="file"] {
+    border: 1px dashed var(--border-color);
+    padding: 10px; /* Reduced padding */
+    border-radius: 6px;
+    background-color: var(--light-gray);
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  button[type="submit"] {
+    background: var(--instagram-gradient);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px; /* Slightly reduced padding */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px; /* Reduced top margin */
+    transition: opacity 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    opacity: 0.9;
+  }
+  
+  /* Upload progress styling */
+  p {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--instagram-blue);
+  }
+  
+  /* Small helper text styling */
+  .helper-text {
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin-top: 3px;
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #e1306c;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  
+  /* Success message styling */
+  .success-message {
+    color: #3897f0;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  
+  /* Fix mobile scrolling issues */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .form-container {
+      padding: 25px 15px;
+      max-height: 85vh;
+    }
+    
+    .fullscreen-container {
+      padding: 8px;
+    }
+    
+    .form-group {
+      margin-bottom: 3px;
+    }
+    
+    button[type="submit"] {
+      padding: 10px 16px;
+    }
+  }

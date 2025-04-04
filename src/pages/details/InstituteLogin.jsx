@@ -115,17 +115,21 @@ const InstituteLoginForm = () => {
                     </div>
 
                     <div className="form-row">
-                        <div className="form-group half-width">
-                            <label htmlFor="instituteName">Institute City Location:</label>
-                            <input
-                                type="text"
-                                id="instituteName"
-                                name="instituteName"
-                                value={formData.instituteName}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
+    <div className="form-group half-width">
+        <label htmlFor="instituteName">Institute City Location:</label>
+        <select
+            id="instituteName"
+            name="instituteName"
+            value={formData.instituteName}
+            onChange={handleChange}
+            required
+        >
+            <option value="" disabled>Select City</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Pune">Pune</option>
+            <option value="Delhi">Delhi</option>
+        </select>
+    </div>
 
                         <div className="form-group half-width">
                             <label htmlFor="establishedYear">Established Year:</label>

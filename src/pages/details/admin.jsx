@@ -40,14 +40,16 @@ const AdminLoginForm = () => {
         }
     };
 
+  
     return (
-        <div className="fullscreen-container">
-            <div className="form-container">
+        
+        <div className="admin-login-fullscreen-container">
+            <div className="admin-login-form-container">
                 <h2>Admin Login</h2>
                 <form onSubmit={handleSubmit}>
-                    {error && <p className="error-text">{error}</p>}
-                    <div className="form-row">
-                        <div className="form-group">
+                    {error && <p className="admin-login-error-text">{error}</p>}
+                    <div className="admin-login-form-row">
+                        <div className="admin-login-form-group">
                             <label htmlFor="email">Email:</label>
                             <input
                                 type="email"
@@ -59,9 +61,9 @@ const AdminLoginForm = () => {
                             />
                         </div>
                     </div>
-
-                    <div className="form-row">
-                        <div className="form-group">
+    
+                    <div className="admin-login-form-row">
+                        <div className="admin-login-form-group">
                             <label htmlFor="password">Password:</label>
                             <input
                                 type="password"
@@ -73,23 +75,23 @@ const AdminLoginForm = () => {
                             />
                         </div>
                     </div>
-
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label>
+    
+                    <div className="admin-login-form-row">
+                        <div className="admin-login-form-group admin-login-checkbox-container">
+                            <label className="admin-login-checkbox-label">
                                 <input
                                     type="checkbox"
                                     name="rememberMe"
                                     checked={formData.rememberMe}
                                     onChange={handleChange}
                                 />
-                                Remember Me
+                                <span>Remember Me</span>
                             </label>
                         </div>
                     </div>
-
-                    <div className="form-row">
-                        <div className="form-group">
+    
+                    <div className="admin-login-form-row">
+                        <div className="admin-login-form-group">
                             <label htmlFor="twoFactorCode">Two-Factor Code (if enabled):</label>
                             <input
                                 type="text"
@@ -100,15 +102,19 @@ const AdminLoginForm = () => {
                             />
                         </div>
                     </div>
-
-                    <button type="submit" disabled={loading}>
+    
+                    <button type="submit" className="admin-login-submit-btn" disabled={loading}>
                         {loading ? "Logging in..." : "Login"}
                     </button>
-                    <a href="/forgot-password">Forgot Password?</a>
+                    <a href="/forgot-password" className="admin-login-forgot-link">Forgot Password?</a>
                 </form>
             </div>
         </div>
     );
+
+
+
+
 };
 
 export default AdminLoginForm;

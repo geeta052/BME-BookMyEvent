@@ -179,24 +179,28 @@ const StudentLoginForm = () => {
         }
     };
 
+    
+
     return (
-        <div className="form-container">
-            <div className="form-header">
+        <div className="fullscreen-container">
+
+        <div className="student-profile-form-container">
+            <div className="student-profile-form-header">
                 <h1>Student Profile</h1>
                 <p>Complete your profile to join campus events and activities</p>
             </div>
             
             {submitSuccess ? (
-                <div className="success-message">
-                    <div className="success-icon">✓</div>
+                <div className="student-profile-success-message">
+                    <div className="student-profile-success-icon">✓</div>
                     <h2>Profile Updated Successfully!</h2>
                     <p>You're being redirected to your dashboard...</p>
                 </div>
             ) : (
                 <form onSubmit={handleSubmit}>
-                    <div className="form-grid">
-                        <div className="form-left">
-                            <div className="form-group">
+                    <div className="student-profile-form-grid">
+                        <div className="student-profile-form-left">
+                            <div className="student-profile-form-group">
                                 <label htmlFor="studentName">Full Name</label>
                                 <input
                                     type="text"
@@ -209,8 +213,8 @@ const StudentLoginForm = () => {
                                 />
                             </div>
                             
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="student-profile-form-row">
+                                <div className="student-profile-form-group">
                                     <label htmlFor="dateOfBirth">Date of Birth</label>
                                     <input
                                         type="date"
@@ -222,7 +226,7 @@ const StudentLoginForm = () => {
                                     />
                                 </div>
                                 
-                                <div className="form-group">
+                                <div className="student-profile-form-group">
                                     <label htmlFor="gender">Gender</label>
                                     <select
                                         id="gender"
@@ -240,7 +244,7 @@ const StudentLoginForm = () => {
                                 </div>
                             </div>
                             
-                            <div className="form-group">
+                            <div className="student-profile-form-group">
                                 <label htmlFor="instituteName">City</label>
                                 <input
                                     type="text"
@@ -253,8 +257,8 @@ const StudentLoginForm = () => {
                                 />
                             </div>
                             
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="student-profile-form-row">
+                                <div className="student-profile-form-group">
                                     <label htmlFor="department">Department</label>
                                     <select
                                         id="department"
@@ -272,7 +276,7 @@ const StudentLoginForm = () => {
                                     </select>
                                 </div>
                                 
-                                <div className="form-group">
+                                <div className="student-profile-form-group">
                                     <label htmlFor="yearOfStudy">Year of Study</label>
                                     <select
                                         id="yearOfStudy"
@@ -290,7 +294,7 @@ const StudentLoginForm = () => {
                                 </div>
                             </div>
                             
-                            <div className="form-group">
+                            <div className="student-profile-form-group">
                                 <label htmlFor="degree">Degree Program</label>
                                 <input
                                     type="text"
@@ -303,7 +307,7 @@ const StudentLoginForm = () => {
                                 />
                             </div>
                             
-                            <div className="form-group">
+                            <div className="student-profile-form-group">
                                 <label htmlFor="clubsMembership">Clubs Membership (Optional)</label>
                                 <input
                                     type="text"
@@ -316,21 +320,21 @@ const StudentLoginForm = () => {
                             </div>
                         </div>
                         
-                        <div className="form-right">
-                            <div className="form-group profile-upload">
+                        <div className="student-profile-form-right">
+                            <div className="student-profile-form-group student-profile-upload">
                                 <label>Profile Picture</label>
-                                <div className="upload-container">
+                                <div className="student-profile-upload-container">
                                     <div 
-                                        className="upload-area" 
+                                        className="student-profile-upload-area" 
                                         onClick={() => document.getElementById('profilePicture').click()}
                                     >
                                         {previewImage ? (
-                                            <img src={previewImage} alt="Profile preview" className="preview-image" />
+                                            <img src={previewImage} alt="Profile preview" className="student-profile-preview-image" />
                                         ) : formData.profilePicture ? (
-                                            <img src={formData.profilePicture} alt="Profile" className="preview-image" />
+                                            <img src={formData.profilePicture} alt="Profile" className="student-profile-preview-image" />
                                         ) : (
                                             <>
-                                                <div className="upload-icon">
+                                                <div className="student-profile-upload-icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                                         <polyline points="17 8 12 3 7 8"></polyline>
@@ -338,14 +342,14 @@ const StudentLoginForm = () => {
                                                     </svg>
                                                 </div>
                                                 <span>Click to upload image</span>
-                                                <span className="upload-hint">JPG, PNG (max 2MB)</span>
+                                                <span className="student-profile-upload-hint">JPG, PNG (max 2MB)</span>
                                             </>
                                         )}
                                         
                                         {uploadProgress !== null && uploadProgress < 100 && (
-                                            <div className="upload-progress">
+                                            <div className="student-profile-upload-progress">
                                                 <div 
-                                                    className="progress-bar" 
+                                                    className="student-profile-progress-bar" 
                                                     style={{ width: `${uploadProgress}%` }}
                                                 ></div>
                                                 <span>{Math.round(uploadProgress)}%</span>
@@ -363,11 +367,11 @@ const StudentLoginForm = () => {
                                 </div>
                             </div>
                             
-                            <div className="form-group">
+                            <div className="student-profile-form-group">
                                 <label>Event Preferences</label>
-                                <div className="checkbox-group">
+                                <div className="student-profile-checkbox-group">
                                     {eventsList.map((event, index) => (
-                                        <div className="checkbox-item" key={index}>
+                                        <div className="student-profile-checkbox-item" key={index}>
                                             <input
                                                 type="checkbox"
                                                 id={`event-${index}`}
@@ -382,10 +386,10 @@ const StudentLoginForm = () => {
                                 </div>
                             </div>
                             
-                            <div className="form-group location-group">
+                            <div className="student-profile-form-group student-profile-location-group">
                                 <label>Your Location</label>
-                                <div className="location-inputs">
-                                    <div className="location-input">
+                                <div className="student-profile-location-inputs">
+                                    <div className="student-profile-location-input">
                                         <label htmlFor="latitude">Latitude</label>
                                         <input
                                             type="text"
@@ -397,7 +401,7 @@ const StudentLoginForm = () => {
                                             required
                                         />
                                     </div>
-                                    <div className="location-input">
+                                    <div className="student-profile-location-input">
                                         <label htmlFor="longitude">Longitude</label>
                                         <input
                                             type="text"
@@ -412,7 +416,7 @@ const StudentLoginForm = () => {
                                 </div>
                                 <button 
                                     type="button" 
-                                    className="location-btn" 
+                                    className="student-profile-location-btn" 
                                     onClick={getUserLocation}
                                 >
                                     Get My Location
@@ -421,17 +425,25 @@ const StudentLoginForm = () => {
                         </div>
                     </div>
                     
-                    <div className="form-footer">
-                        <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                    <div className="student-profile-form-footer">
+                        <button type="submit" className="student-profile-submit-btn" disabled={isSubmitting}>
                             {isSubmitting ? (
-                                <span className="loading-spinner"></span>
+                                <span className="student-profile-loading-spinner"></span>
                             ) : 'Save Profile'}
                         </button>
                     </div>
                 </form>
             )}
         </div>
+        </div>
     );
+
+
+
+
+
+
+
 };
 
 export default StudentLoginForm;

@@ -174,7 +174,7 @@
   margin-bottom: 0;
   margin-left: auto;
   text-align: right;
-  font-size: 35px;
+  font-size: 45px;
   font-weight: 700;
   
   /* Instagram gradient color */
@@ -189,7 +189,7 @@
 .calendar-section-custom {
   margin-left: auto;
   flex-shrink: 0;
-  margin-top: 19px;
+  margin-top: 1px;
 }
 /* Calendar Button */
 /* Calendar Button */

@@ -1,106 +1,167 @@
-/* AccountTypeRegistration.css */
+/* Ensure black background across the site */
 
-body {
-    font-family: 'Arial', sans-serif;
+/* Remove the pink header - adjust the selector to match your actual header element */
+.header, 
+header, 
+.app-header, 
+.pink-header {
+  display: none;
+}
+
+html, body {
+    background-color: #000000 !important;
+    color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(270deg, #e0eafc, #cfdef3, #a8c0e0, #f3e5f5);
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.registration-container {
-    max-width: 400px;
-    margin: 5% auto;
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    opacity: 0.9;
-}
-
-h2 {
-    text-align: center;
-    color: black !important; /* Added !important to force the text color to black */
-    margin-bottom: 20px;
-}
-
-.radio-group {
-    margin-bottom: 20px;
-}
-
-.radio-label {
-    display: block;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #007BFF;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
-    color: black; /* Text color set to black */
-}
-
-.radio-label:hover {
-    background-color: #e7f0ff;
-}
-
-.radio-input {
-    display: none;
-}
-
-.radio-custom {
-    display: inline-block;
-    padding-left: 30px;
-    position: relative;
-    cursor: pointer;
-}
-
-.radio-custom::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    border: 2px solid #007BFF;
-    border-radius: 50%;
-    background: white;
-    transition: background 0.3s;
-}
-
-.radio-input:checked + .radio-custom::before {
-    background-color: #007BFF;
-}
-
-.continue-button {
-    display: block;
+    min-height: 100vh;
     width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
+  }
+  
+  /* Root container for site-wide background control */
+  #root, #app, .app-container, main {
+    background-color: #000000;
+    min-height: 100vh;
+  }
+  
+  /* Instagram theme colors */
+  :root {
+    --instagram-blue: #0095f6;
+    --instagram-purple: #8a3ab9;
+    --instagram-pink: #e95950;
+    --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    --instagram-light-bg: #fafafa;
+    --instagram-border: #dbdbdb;
+    --instagram-text: #262626;
+    --instagram-secondary-text: #8e8e8e;
+    --form-bg: #ffffff;
+  }
+  
+  /* Registration container */
+ /* Center the registration container */
+.registration-container {
+    background-color: var(--form-bg);
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+    color: var(--instagram-text);
+    max-width: 400px;
+    padding: 40px 30px;
+    text-align: center;
+    
+    /* Center positioning */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+  
+  /* Radio button group */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 30px 0;
+  }
+  
+  /* Radio label */
+  .radio-label {
+    align-items: center;
+    border: 1px solid var(--instagram-border);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    padding: 15px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .radio-label:hover {
+    border-color: var(--instagram-blue);
+    background-color: #f8f8f8;
+  }
+  
+  /* Hide the original radio input */
+  .radio-input {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+  }
+  
+  /* Custom radio appearance */
+  .radio-custom {
+    align-items: center;
+    color: var(--instagram-text);
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    width: 100%;
+  }
+  
+  .radio-custom::before {
+    background-color: #fff;
+    border: 2px solid var(--instagram-border);
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+    height: 18px;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+    width: 18px;
+  }
+  
+  /* Selected radio style */
+  .radio-input:checked + .radio-custom::before {
+    background: var(--instagram-gradient);
+    border-color: transparent;
+    box-shadow: 0 0 0 2px white inset;
+  }
+  
+  .radio-input:checked + .radio-custom {
+    color: var(--instagram-blue);
+    font-weight: 600;
+  }
+  
+  .radio-input:checked ~ .radio-label {
+    border-color: var(--instagram-blue);
+    background-color: rgba(0, 149, 246, 0.05);
+  }
+  
+  /* Continue button */
+  .continue-button {
+    background: var(--instagram-gradient);
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    color: white;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.continue-button:hover {
-    background-color: #0056b3;
-}
+    font-weight: 600;
+    height: 44px;
+    margin-top: 10px;
+    padding: 0 24px;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  .continue-button:hover {
+    opacity: 0.9;
+  }
+  
+  .continue-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .registration-container {
+      border-radius: 0;
+      margin: 0;
+      max-width: 100%;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+  }
